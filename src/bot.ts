@@ -25,7 +25,7 @@ booru.search('safebooru', ['hatsune_miku'], { limit: 1, random: true})
             client.uploadMedia(imageResponse)
             .then((uploadResponse: Response<Entity.Attachment | Entity.AsyncAttachment>) => {
                 console.log(uploadResponse.data)
-                client.postStatus(`Tags: ${pic.tags.slice(0,10).join(', ')}\nPost: ${pic.postView}`, {'media_ids': [uploadResponse.data.id]})
+                client.postStatus(`Tags: ${pic.tags.slice(0,10).join(', ')}\nPost: ${pic.postView}`, {media_ids: [uploadResponse.data.id], sensitive: true})
                     .then((postResponse: Response<Entity.Status>) => {
                         console.log(postResponse.data)
                     })
